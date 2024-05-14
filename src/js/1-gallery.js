@@ -86,6 +86,5 @@ const createGallery = images.map(({ original, preview, description }) => {
 
 gallery.innerHTML = createGallery
 
-const lightbox = new SimpleLightbox('gallery a', { captions: true, captionsDelay: 250 })
+const lightbox = new SimpleLightbox('.gallery a', { captions: true, captionsData: 'alt', captionsDelay: 250 })
 
-gallery.addEventListener('click', (e) => e.preventDefault())
