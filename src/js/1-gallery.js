@@ -1,3 +1,8 @@
+// // SimpleLightbox
+import SimpleLightbox from "simplelightbox";
+// // simplelightbox css 
+import "simplelightbox/dist/simple-lightbox.min.css"
+
 const images = [
     {
         preview:
@@ -64,34 +69,23 @@ const images = [
     },
 ];
 
+
 const gallery = document.querySelector('ul.gallery');
 
 const createGallery = images.map(({ original, preview, description }) => {
     return `
 <li class="gallery-item">
-  <a class= "gallery-link" href="${original}">
-    <img
-      class ="gallery-image"
-      src= "${preview}"
-      data-source ="${original}"
-      alt ="${description}"
-    />
-  </a>
-</li>
-`}).join('')
+	<a class="gallery-link" href="${original}">
+		<img 
+			class="gallery-image" 
+			src="${preview}" 
+			alt="${description}" 
+			/>
+	</a>
+</li>`}).join('')
 
 gallery.innerHTML = createGallery
-gallery.addEventListener('click', handleClick)
 
-function handleClick(event) {
-    event.preventDefault()
-    const targetEl = event.target;
-    const getSource = targetEl.getAttribute('data-source')
-    if (!targetEl.classList.contains('gallery-image')) {
-        return
-    }
-    const instance = basicLightbox.create(`
-    <img src="${getSource}" width="1112" height="640">
-`);
-    instance.show()
-}
+const lightbox = new SimpleLightbox('gallery a', { captions: true, captionsDelay: 250 })
+
+gallery.addEventListener('click', (e) => e.preventDefault())
