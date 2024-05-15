@@ -1,0 +1,65 @@
+/* Form container */
+.feedback-form {
+  max-width: 350px; /* Adjust as needed */
+  margin: 0 auto; /* Center the form */
+  padding: 25px;
+  background-color: #fff; /* White background color */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Labels */
+.feedback-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333; /* Dark gray text color */
+}
+
+/* Inputs */
+.feedback-form input[type='email'],
+.feedback-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Slightly rounded corners */
+  background-color: #fff; /* White background */
+  color: #333; /* Dark gray text color */
+  resize: none;
+}
+
+/* Textarea */
+.feedback-form textarea {
+  height: 100px; /* Adjust as needed */
+}
+
+/* Submit button */
+.feedback-form button[type='submit'] {
+  width: 95px;
+  height: 40px;
+  padding: 8px 16px;
+  background: #4e75ff; /* Blue background */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.feedback-form button[type='submit']:hover {
+  background: #6c8cff;
+}
+/* Submit button */
+.feedback-form button[type='submit'] {
+  background-color: #3f51b5; /* Blue background */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
