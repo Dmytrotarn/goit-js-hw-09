@@ -1,24 +1,44 @@
-const formData = {
-    email: "",
-    message: "",
+let formData = {
+	email: "",
+	message: "",
 }
 
 const form = document.querySelector('.feedback-form');
-const email = document.querySelector('input')
-const submitBtn = document.querySelector('button')
+const emailInput = form.querySelector('input[name="email"]');
+const messageInput = form.querySelector('textarea[name="message"]');
+const submitBtn = form.querySelector('button[type="submit"]');
 
-const handleInput = (e) => {
-    if (e.target == email) {
-        formData.email = e.target.value.trim()
-    }
-    else { formData.message = e.target.value.trim() }
+//  інпут
+form.addEventListener('input', (event) => {
+	const inputName = event.target.name
+	formData[inputName] = event.target.value.trim()
+	localStorage.setItem("feedback-form-state", JSON.stringify(formData))
+})
 
-}
 
-form.addEventListener('input', handleInput)
+window.addEventListener('DOMContentLoaded', () => {
+	const savedData = localStorage.getItem("feedback-form-state")
 
-submitBtn.addEventListener('click', handleSubmit)
 
-function handleSubmit(e) {
-    console.log(formData);
-}
+	if (savedData) {
+		formData = JSON.parse(savedData);
+		emailInput.value = formData.email;
+		messageInput.value = formData.message;
+	}
+
+})
+
+
+form.addEventListener('submit', (event) => {
+	event.preventDefault()
+	if (emailInput.value == '' || messageInput.value == '') {
+		return console.log("Please fill all fields");
+	}
+	console.log(formData);
+
+	emailInput.value = '';
+	messageInput.value = '';
+	localStorage.removeItem('feedback-form-state')
+
+})
+
